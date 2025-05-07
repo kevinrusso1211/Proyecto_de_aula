@@ -1,0 +1,4 @@
+ID:1
+Platos:Sopa de calabaza x3, postre de maracuya x2, Gaseosa personal x3
+PrecioTotal:$66500
+Total:66500

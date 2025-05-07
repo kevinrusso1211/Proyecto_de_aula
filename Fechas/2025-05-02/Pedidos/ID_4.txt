@@ -1,0 +1,4 @@
+ID:4
+Platos:postre de maracuya x2, Botella de agua personal x2
+PrecioTotal:$24000
+Total:24000

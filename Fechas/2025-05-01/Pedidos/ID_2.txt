@@ -1,0 +1,4 @@
+ID:2
+Platos:Sopa de calabaza x3, Pechuga a la plancha con pure x4, postre de maracuya x4, Gaseosa personal x2
+PrecioTotal:$171000
+Total:171000
