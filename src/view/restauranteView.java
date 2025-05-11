@@ -1,5 +1,7 @@
 package view;
 
+import controller.empleadoController;
+import controller.loginController;
 import controller.restauranteController;
 import java.awt.*;
 import javax.swing.*;
@@ -103,6 +105,8 @@ public class restauranteView extends javax.swing.JFrame {
 
         gbc.gridy++;
         panelLateral.add(btnRegresar, gbc);
+        gbc.gridy++;
+        panelLateral.add(btnInicio, gbc);
 
         getContentPane().add(panelLateral, java.awt.BorderLayout.EAST);
 
@@ -196,6 +200,7 @@ public class restauranteView extends javax.swing.JFrame {
         comida4 = new javax.swing.JLabel();
         comida5 = new javax.swing.JLabel();
         comida6 = new javax.swing.JLabel();
+        btnInicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -289,6 +294,13 @@ public class restauranteView extends javax.swing.JFrame {
 
         comida6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
+        btnInicio.setText("Inicio");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -300,11 +312,12 @@ public class restauranteView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnCrearPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnCrearPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnInicio)
+                                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(icon3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -397,7 +410,9 @@ public class restauranteView extends javax.swing.JFrame {
                                     .addComponent(btnCrearPedido)
                                     .addComponent(btnRegresar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAgregar))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnAgregar)
+                                    .addComponent(btnInicio)))
                             .addComponent(icon3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1115, 1115, 1115)
                         .addComponent(icon4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -711,11 +726,21 @@ public class restauranteView extends javax.swing.JFrame {
         panelCentral.repaint();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        Login login = new Login();
+        empleadoController empController = new empleadoController(); 
+        new loginController(login, empController,controller );
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IconMain;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCrearPedido;
+    private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel comida1;
     private javax.swing.JLabel comida2;

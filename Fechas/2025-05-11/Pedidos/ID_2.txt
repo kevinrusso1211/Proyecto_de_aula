@@ -1,0 +1,4 @@
+ID:2
+Platos:Sopa de calabaza x3, Pechuga a la plancha con pure x4, Gaseosa 2LT x2
+PrecioTotal:$139000
+Total:139000
