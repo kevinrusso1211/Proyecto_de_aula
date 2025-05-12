@@ -36,7 +36,7 @@ public class GraficoView extends javax.swing.JFrame {
 
     private DefaultCategoryDataset crearDataset(Map<String, Integer> data) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
+        dataset.addValue(0, "Total", "Inicio")
         for (Map.Entry<String, Integer> entry : data.entrySet()) {
             dataset.addValue(entry.getValue(), "Total", entry.getKey());
         }
