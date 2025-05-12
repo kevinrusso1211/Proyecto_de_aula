@@ -13,10 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Kevin Russo Emiliany
- */
+
 public class UserView extends javax.swing.JFrame {
 
     /**

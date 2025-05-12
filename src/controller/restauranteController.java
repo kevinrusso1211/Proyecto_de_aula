@@ -104,7 +104,11 @@ public class restauranteController {
                 datosPedido.get("precioTotal"),
                 datosPedido.get("total")
             };
-
+            
+            System.out.println("Agregando pedido:");
+System.out.println("Platos: " + datosPedido.get("platos"));
+System.out.println("Precio Total: " + datosPedido.get("precioTotal"));
+System.out.println("Total: " + datosPedido.get("total"));
             vista.actualizarTabla(fila);
 
         } catch (IOException e) {
