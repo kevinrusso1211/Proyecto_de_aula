@@ -7,13 +7,13 @@ import java.util.*;
 
 public class ReporteController {
 
-    // Este es el único método público que llamará la vista para mostrar solo el total
+    
     public int calcularTotalDesdeFecha(File raiz, String fechaInicioStr, int dias) {
         List<Path> fechas = obtenerFechasValidas(raiz, fechaInicioStr, dias);
         return sumarTotales(fechas);
     }
 
-    // ✅ NUEVO: método para obtener los totales por día, ideal para graficar
+   
     public Map<String, Integer> obtenerTotalesPorFecha(File raiz, String fechaInicioStr, int dias) {
         Map<String, Integer> mapaTotales = new LinkedHashMap<>();
         List<Path> fechas = obtenerFechasValidas(raiz, fechaInicioStr, dias);
@@ -49,7 +49,7 @@ public class ReporteController {
         return mapaTotales;
     }
 
-    // Buscar carpetas existentes desde una fecha específica hacia adelante
+   
     private List<Path> obtenerFechasValidas(File raiz, String fechaInicioStr, int dias) {
         LocalDate fechaInicio;
         try {
@@ -62,7 +62,7 @@ public class ReporteController {
         List<Path> fechasEncontradas = new ArrayList<>();
         int diasVerificados = 0;
 
-        while (fechasEncontradas.size() < dias && diasVerificados < 365) { // Evita bucles infinitos
+        while (fechasEncontradas.size() < dias && diasVerificados < 365) { 
             Path carpetaFecha = raiz.toPath().resolve(fechaInicio.toString());
 
             if (Files.exists(carpetaFecha) && Files.isDirectory(carpetaFecha)) {
@@ -76,7 +76,7 @@ public class ReporteController {
         return fechasEncontradas;
     }
 
-    // Sumar los valores encontrados en cada archivo .txt que tenga la línea "Total:XXXX"
+    
     private int sumarTotales(List<Path> carpetasFecha) {
         int total = 0;
 
@@ -96,7 +96,7 @@ public class ReporteController {
                                 }
                             }
                         } catch (IOException | NumberFormatException e) {
-                            e.printStackTrace(); // podrías reemplazar por logs
+                            e.printStackTrace(); 
                         }
                     }
                 }

@@ -71,7 +71,7 @@ public class restauranteView extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         getContentPane().setLayout(new java.awt.BorderLayout());
 
-        // Panel Superior
+       
         panelSuperior = new javax.swing.JPanel();
         panelSuperior.setBackground(new java.awt.Color(252, 167, 44));
         panelSuperior.setPreferredSize(new java.awt.Dimension(0, 100));
@@ -90,7 +90,7 @@ public class restauranteView extends javax.swing.JFrame {
         panelSuperior.add(panelTransparente, BorderLayout.WEST);
         getContentPane().add(panelSuperior, java.awt.BorderLayout.NORTH);
 
-        // Panel Lateral 
+        
         panelLateral = new javax.swing.JPanel();
         panelLateral.setBackground(new java.awt.Color(252, 167, 44));
         panelLateral.setPreferredSize(new java.awt.Dimension(200, 0));
@@ -110,7 +110,7 @@ public class restauranteView extends javax.swing.JFrame {
 
         getContentPane().add(panelLateral, java.awt.BorderLayout.EAST);
 
-        // Panel Central 
+        
         panelCentral = new javax.swing.JPanel();
         panelCentral.setBackground(Color.WHITE);
         panelCentral.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -120,13 +120,13 @@ public class restauranteView extends javax.swing.JFrame {
     }
 
     private void configurarTabla() {
-        // Columnas ajustadas a tu requerimiento:
+        
         String[] columnas = {"ID", "Pedido (Plato x Cantidad)", "Precio Unitario", "Total"};
 
         DefaultTableModel modeloTabla = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Mantienes las celdas no editables
+                return false; 
             }
         };
 
@@ -157,7 +157,7 @@ public class restauranteView extends javax.swing.JFrame {
             c.setVisible(visible);
         }
 
-        // Resetear precios
+        
         if (visible) {
             precio1.setText("$0");
             precio2.setText("$0");
@@ -442,45 +442,45 @@ public class restauranteView extends javax.swing.JFrame {
         JPanel panelContenedorPrincipal = new JPanel(new BorderLayout());
         panelContenedorPrincipal.setBackground(Color.WHITE);
 
-// Panel principal vertical para las dos filas de productos
+
         JPanel panelVertical = new JPanel();
         panelVertical.setLayout(new BoxLayout(panelVertical, BoxLayout.Y_AXIS));
 
-// === PRIMERA FILA (productos 1-3) ===
+
         JPanel panelHorizontal1 = new JPanel();
         panelHorizontal1.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-// Bloque 1
+
         JPanel bloque1 = new JPanel();
         bloque1.setLayout(new BoxLayout(bloque1, BoxLayout.Y_AXIS));
-        bloque1.add(comida1);  // Nuevo label
+        bloque1.add(comida1);  
         bloque1.add(icon1);
         JPanel fila1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila1.add(spinnerIcon1);
         fila1.add(precio1);
         bloque1.add(fila1);
 
-// Bloque 2 
+
         JPanel bloque2 = new JPanel();
         bloque2.setLayout(new BoxLayout(bloque2, BoxLayout.Y_AXIS));
-        bloque2.add(comida2);  // Nuevo label
+        bloque2.add(comida2);  
         bloque2.add(icon2);
         JPanel fila2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila2.add(spinnerIcon2);
         fila2.add(precio2);
         bloque2.add(fila2);
 
-// Bloque 3
+
         JPanel bloque3 = new JPanel();
         bloque3.setLayout(new BoxLayout(bloque3, BoxLayout.Y_AXIS));
-        bloque3.add(comida3);  // Nuevo label
+        bloque3.add(comida3);  
         bloque3.add(icon3);
         JPanel fila3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila3.add(spinnerIcon3);
         fila3.add(precio3);
         bloque3.add(fila3);
 
-// Configuración de tamaño para los primeros 3 bloques
+
         Dimension tamañoBloque = new Dimension(350, 300);
         bloque1.setPreferredSize(tamañoBloque);
         bloque2.setPreferredSize(tamañoBloque);
@@ -490,38 +490,38 @@ public class restauranteView extends javax.swing.JFrame {
         panelHorizontal1.add(bloque2);
         panelHorizontal1.add(bloque3);
 
-// Espacio entre filas
-        panelVertical.add(panelHorizontal1);
-        panelVertical.add(Box.createVerticalStrut(30));  // Margen entre filas
 
-// === SEGUNDA FILA (productos 4-6) ===
+        panelVertical.add(panelHorizontal1);
+        panelVertical.add(Box.createVerticalStrut(30));  
+
+
         JPanel panelHorizontal2 = new JPanel();
         panelHorizontal2.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-// Bloque 4
+
         JPanel bloque4 = new JPanel();
         bloque4.setLayout(new BoxLayout(bloque4, BoxLayout.Y_AXIS));
-        bloque4.add(comida4);  // Nuevo label
+        bloque4.add(comida4);  
         bloque4.add(icon4);
         JPanel fila4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila4.add(spinnerIcon4);
         fila4.add(precio4);
         bloque4.add(fila4);
 
-// Bloque 5
+
         JPanel bloque5 = new JPanel();
         bloque5.setLayout(new BoxLayout(bloque5, BoxLayout.Y_AXIS));
-        bloque5.add(comida5);  // Nuevo label
+        bloque5.add(comida5);  
         bloque5.add(icon5);
         JPanel fila5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila5.add(spinnerIcon5);
         fila5.add(precio5);
         bloque5.add(fila5);
 
-// Bloque 6
+
         JPanel bloque6 = new JPanel();
         bloque6.setLayout(new BoxLayout(bloque6, BoxLayout.Y_AXIS));
-        bloque6.add(comida6);  // Nuevo label
+        bloque6.add(comida6);  
         bloque6.add(icon6);
         JPanel fila6 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila6.add(spinnerIcon6);
@@ -541,7 +541,7 @@ public class restauranteView extends javax.swing.JFrame {
         comida4.setText("Gaseosa 2LT");
         comida5.setText("Gaseosa personal");
         comida6.setText("Botella de agua personal");
-// Configuración de tamaño igual para los nuevos bloques
+
         bloque4.setPreferredSize(tamañoBloque);
         bloque5.setPreferredSize(tamañoBloque);
         bloque6.setPreferredSize(tamañoBloque);
@@ -552,20 +552,20 @@ public class restauranteView extends javax.swing.JFrame {
 
         panelVertical.add(panelHorizontal2);
 
-// Panel para el botón (abajo-derecha)
+
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         panelBoton.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 5));
         panelBoton.add(btnAgregar);
         panelBoton.setOpaque(false);
 
-// Configuración final
+
         panelContenedorPrincipal.add(panelVertical, BorderLayout.CENTER);
         panelContenedorPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
-// Mostrar todos los componentes
-        setComponentVisibility(true);  // Método para mostrar todos los componentes
 
-// Actualizar panel central
+        setComponentVisibility(true);  
+
+
         panelCentral.removeAll();
         panelCentral.setLayout(new BorderLayout());
         panelCentral.add(panelContenedorPrincipal, BorderLayout.CENTER);
@@ -585,16 +585,16 @@ public class restauranteView extends javax.swing.JFrame {
         icon3.setVisible(false);
         btnAgregar.setVisible(false);
 
-        // 2. Limpiar y restaurar el panelCentral a su estado original
-        panelCentral.removeAll(); // Elimina todos los componentes
-        panelCentral.setLayout(new BorderLayout()); // Restablece el layout
-        panelCentral.add(scrollPane, BorderLayout.CENTER); // Vuelve a agregar la tabla
+        
+        panelCentral.removeAll(); 
+        panelCentral.setLayout(new BorderLayout()); 
+        panelCentral.add(scrollPane, BorderLayout.CENTER); 
 
-        // 3. Mostrar la tabla
+        
         scrollPane.setVisible(true);
         tablaPedidos.setVisible(true);
 
-        // 4. Actualizar la interfaz
+        
         panelCentral.revalidate();
         panelCentral.repaint();
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -643,7 +643,7 @@ public class restauranteView extends javax.swing.JFrame {
         int cant5 = (Integer) spinnerIcon5.getValue();
         int cant6 = (Integer) spinnerIcon6.getValue();
 
-        String plato1 = comida1.getText(); // puedes usar un label en lugar de un JTextField si no es editable
+        String plato1 = comida1.getText(); 
         String plato2 = comida2.getText();
         String plato3 = comida3.getText();
         String plato4 = comida4.getText();
@@ -692,7 +692,7 @@ public class restauranteView extends javax.swing.JFrame {
             total += p6;
         }
 
-        // Quitar la coma final
+        
         if (platos.length() > 0 && platos.charAt(platos.length() - 2) == ',') {
             platos.setLength(platos.length() - 2);
         }
@@ -709,19 +709,19 @@ public class restauranteView extends javax.swing.JFrame {
         datos.put("precioTotal", "$" + total);
         datos.put("total", String.valueOf(total));
 
-        // Llamar al controlador
+        
         restauranteController controller = new restauranteController(this, new pedidoModel());
         controller.agregarPedido(datos);
 
-        panelCentral.removeAll(); // Elimina todos los componentes
-        panelCentral.setLayout(new BorderLayout()); // Restablece el layout
-        panelCentral.add(scrollPane, BorderLayout.CENTER); // Vuelve a agregar la tabla
+        panelCentral.removeAll(); 
+        panelCentral.setLayout(new BorderLayout());
+        panelCentral.add(scrollPane, BorderLayout.CENTER); 
 
-        // 3. Mostrar la tabla
+        
         scrollPane.setVisible(true);
         tablaPedidos.setVisible(true);
 
-        // 4. Actualizar la interfaz
+        
         panelCentral.revalidate();
         panelCentral.repaint();
     }//GEN-LAST:event_btnAgregarActionPerformed

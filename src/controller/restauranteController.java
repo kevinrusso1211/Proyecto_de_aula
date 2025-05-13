@@ -11,13 +11,13 @@ public class restauranteController {
 
     private restauranteView vista;
     private pedidoModel modelo;
-    private int ingreso=0;
+    private int ingreso = 0;
     ArrayList<Object> pedidos = new ArrayList<>();
 
     public restauranteController(restauranteView vista, pedidoModel modelo) {
         this.vista = vista;
         this.modelo = modelo;
-        crearEstructuraCarpetas(); // Solo crea la carpeta, no carga nada
+        crearEstructuraCarpetas();
     }
 
     private void crearEstructuraCarpetas() {
@@ -27,18 +27,18 @@ public class restauranteController {
 
         File directorio = new File(rutaCompleta);
         if (!directorio.exists()) {
-            directorio.mkdirs(); // Crea todos los directorios necesarios
+            directorio.mkdirs();
         }
     }
 
     public void mostrarVistaRestaurante() {
-        crearEstructuraCarpetas(); // Verifica/crea carpeta del día
+        crearEstructuraCarpetas();
 
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH);
         vista.setLocationRelativeTo(null);
-        vista.setVisible(true); // <-- Ya se puede acceder a la tabla
+        vista.setVisible(true);
 
-        cargarPedidosDelDia(); // <-- Ahora se llama aquí, ya es seguro
+        cargarPedidosDelDia();
     }
 
     private void cargarPedidosDelDia() {
@@ -67,8 +67,8 @@ public class restauranteController {
                             pedidos.add(linea);
                         }
 
-                        Object[] fila = { id, platos, precioTotal, total };
-                        vista.actualizarTabla(fila); // Método ya en tu vista
+                        Object[] fila = {id, platos, precioTotal, total};
+                        vista.actualizarTabla(fila);
                     } catch (IOException e) {
                         e.printStackTrace();
                         JOptionPane.showMessageDialog(null, "Error al leer archivo: " + archivo.getName());
@@ -77,7 +77,7 @@ public class restauranteController {
             }
         }
     }
-    
+
     public void agregarPedido(Map<String, String> datosPedido) {
         try {
             String fechaHoy = java.time.LocalDate.now().toString();
@@ -104,11 +104,11 @@ public class restauranteController {
                 datosPedido.get("precioTotal"),
                 datosPedido.get("total")
             };
-            
+
             System.out.println("Agregando pedido:");
-System.out.println("Platos: " + datosPedido.get("platos"));
-System.out.println("Precio Total: " + datosPedido.get("precioTotal"));
-System.out.println("Total: " + datosPedido.get("total"));
+            System.out.println("Platos: " + datosPedido.get("platos"));
+            System.out.println("Precio Total: " + datosPedido.get("precioTotal"));
+            System.out.println("Total: " + datosPedido.get("total"));
             vista.actualizarTabla(fila);
 
         } catch (IOException e) {
@@ -116,12 +116,5 @@ System.out.println("Total: " + datosPedido.get("total"));
             JOptionPane.showMessageDialog(null, "Error al guardar el pedido: " + e.getMessage());
         }
     }
-    
-    //contains()
-//    public void calcularIngresoMensual(String mes/*El mes debe estar en numero*/){
-//        while(mes==){
-//            
-//        }
-//    }
-   
+
 }

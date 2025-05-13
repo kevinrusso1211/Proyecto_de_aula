@@ -14,10 +14,10 @@ import javax.swing.Timer;
 
 public class adminView extends javax.swing.JFrame {
 
-    // Añade este campo
+    
     private restauranteController restController;
 
-    // Modifica el constructor para recibir el controlador
+    
     public adminView(restauranteController restController) {
         this.restController = restController;
         initComponents();
@@ -257,9 +257,9 @@ public class adminView extends javax.swing.JFrame {
 
         if (fecha != null && !fecha.isEmpty()) {
             try {
-                LocalDate.parse(fecha); // Validación
+                LocalDate.parse(fecha); 
                 ReporteController rc = new ReporteController();
-                File raiz = new File("Fechas"); // Asegúrate de que esta ruta exista
+                File raiz = new File("Fechas");
 
                 int total = rc.calcularTotalDesdeFecha(raiz, fecha, 7);
                 Map<String, Integer> totalesPorFecha = rc.obtenerTotalesPorFecha(raiz, fecha, 7);
@@ -284,10 +284,9 @@ public class adminView extends javax.swing.JFrame {
 
         if (fecha != null && !fecha.isEmpty()) {
             try {
-                LocalDate.parse(fecha); // Validación
+                LocalDate.parse(fecha); 
                 ReporteController rc = new ReporteController();
-                File raiz = new File("Fechas"); // Asegúrate de que esta ruta exista
-
+                File raiz = new File("Fechas"); 
                 int total = rc.calcularTotalDesdeFecha(raiz, fecha, 30);
                 Map<String, Integer> totalesPorFecha = rc.obtenerTotalesPorFecha(raiz, fecha, 30);
 

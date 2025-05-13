@@ -187,7 +187,7 @@ public class Login extends javax.swing.JFrame {
             jButtonVerContrasena.setIcon(new ImageIcon("src/Icons/ojo.png"));
             mostrando = false;
         }else{
-            txtpassword.setEchoChar((char) 0); // Quita el ocultamiento
+            txtpassword.setEchoChar((char) 0); 
             jButtonVerContrasena.setIcon(new ImageIcon("src/Icons/ojo 2.png"));
             mostrando = true;
         }
