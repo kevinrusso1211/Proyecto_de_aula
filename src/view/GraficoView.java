@@ -13,6 +13,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Map;
+import org.jfree.chart.plot.DatasetRenderingOrder;
 
 public class GraficoView extends javax.swing.JFrame {
 
@@ -25,10 +26,10 @@ public class GraficoView extends javax.swing.JFrame {
         DefaultCategoryDataset dataset = crearDataset(data);
 
         CategoryPlot plot = new CategoryPlot();
-        
+
         BarRenderer barRenderer = new BarRenderer() {
             private final Paint[] colores = new Paint[]{
-                    Color.BLUE, Color.RED, Color.GREEN, Color.MAGENTA, Color.ORANGE, Color.CYAN, Color.PINK
+                Color.BLUE, Color.RED, Color.GREEN, Color.MAGENTA, Color.ORANGE, Color.CYAN, Color.PINK
             };
 
             @Override
@@ -36,12 +37,13 @@ public class GraficoView extends javax.swing.JFrame {
                 return colores[column % colores.length];
             }
         };
-        
-        plot.setDataset(1, dataset);
-        plot.setRenderer(1, new LineAndShapeRenderer(true,true));
-        
         plot.setDataset(0, dataset);
         plot.setRenderer(0, barRenderer);
+
+        plot.setDataset(1, dataset);
+        plot.setRenderer(1, new LineAndShapeRenderer(true, true));
+        
+        plot.setDatasetRenderingOrder(DatasetRenderingOrder.FORWARD);
 
         plot.setDomainAxis(new CategoryAxis("Fechas"));
         plot.setRangeAxis(new NumberAxis("Total Generado"));
