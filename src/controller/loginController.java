@@ -20,12 +20,12 @@ public class loginController {
     }
 
     private void inicializar() {
-        vista.login.addActionListener(e -> verificacion());
+        vista.login.addActionListener(e -> realizarLogin());
     }
 
-    private void verificacion() {
-        String usuario = vista.txtname.getText();
-        String password = new String(vista.txtpassword.getPassword());
+    private void realizarLogin() {
+        String usuario = vista.txtname.getText().trim();
+        String password = new String(vista.txtpassword.getPassword()).trim();
 
         if (usuario.equals("admin") && password.equals("admin")) {
             JOptionPane.showMessageDialog(vista, "Bienvenido, Administrador");
@@ -33,15 +33,21 @@ public class loginController {
             vistaAdmin.setLocationRelativeTo(null);
             vistaAdmin.setVisible(true);
             vista.dispose();
+            return;
         } else if (verificarEmpleado(usuario, password)) {
             JOptionPane.showMessageDialog(vista, "Bienvenido, " + usuario);
-            restController.mostrarVistaRestaurante(); // <- aquí se llama en el momento correcto
+            restController.mostrarVistaRestaurante();
             vista.dispose();
+            return;
         } else {
             JOptionPane.showMessageDialog(vista, "Credenciales inválidas", "Error", JOptionPane.ERROR_MESSAGE);
             vista.txtname.setText("");
             vista.txtpassword.setText("");
         }
+        if (usuario.length() < 4 || password.length() < 6) {
+            JOptionPane.showMessageDialog(vista, "El usuario y la contraseña deben tener al menos 6 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     private boolean verificarEmpleado(String userName, String password) {

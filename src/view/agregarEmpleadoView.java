@@ -6,14 +6,14 @@ import javax.swing.JOptionPane;
 import model.empleadoModel;
 
 public class agregarEmpleadoView extends javax.swing.JFrame {
-    
+
     public agregarEmpleadoView() {
         initComponents();
         setTitle("Agregar Empleados");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -181,14 +181,26 @@ public class agregarEmpleadoView extends javax.swing.JFrame {
         String id = txtId.getText();
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
+
         if (!nombre.isEmpty() && !id.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
+
+            if (username.trim().length() < 6) {
+                JOptionPane.showMessageDialog(null, "El nombre de usuario debe tener al menos 4 caracteres.");
+                return;
+            }
+
+            if (password.length() < 6) {
+                JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 6 caracteres.");
+                return;
+            }
+
             empleadoModel nuevoEmpleado = new empleadoModel(nombre, id, username, password);
             empleadoController controllerEmpleado = new empleadoController();
             controllerEmpleado.agregarEmpleado(nuevoEmpleado);
-            JOptionPane.showMessageDialog(null, "Empleado agregado con exito");
+            JOptionPane.showMessageDialog(null, "Empleado agregado con éxito");
             dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Porfavor rellenar todos los campos");
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.");
             txtId.setText("");
             txtNombre.setText("");
             txtPassword.setText("");
