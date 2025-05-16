@@ -215,12 +215,12 @@ public class agregarEmpleadoView extends javax.swing.JFrame {
                     if (cadenaUsuario.length<5) {
                         JOptionPane.showMessageDialog(null, "El nombre de usuario debe tener al menos 5 caracteres.");
                         return;
+                    }else if (cadenaContrasena.length < 8) {
+                        JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 caracteres.");
+                        return;
                     }
                     if(txtUsername.equals(ec.getListaEmpleado().get(i).getUsername())){
                         JOptionPane.showMessageDialog(this, "Ya este userName existe");
-                        return;
-                    }else if (cadenaContrasena.length < 8) {
-                        JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 caracteres.");
                         return;
                     }else{
                         empleadoModel nuevoEmpleado = new empleadoModel(nombre, id, username, password);
