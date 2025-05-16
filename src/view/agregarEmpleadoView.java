@@ -1,8 +1,6 @@
 package view;
 
 import controller.empleadoController;
-import java.awt.Component;
-import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -11,13 +9,15 @@ import model.empleadoModel;
 public class agregarEmpleadoView extends javax.swing.JFrame {
 
     private boolean mostrando = false;
-    
+    empleadoController ec = new empleadoController();
+
     public agregarEmpleadoView() {
         initComponents();
         setTitle("Agregar Empleados");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -112,6 +112,7 @@ public class agregarEmpleadoView extends javax.swing.JFrame {
 
         jButtonVerContrasena.setBackground(new java.awt.Color(255, 255, 255));
         jButtonVerContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/ojo.png"))); // NOI18N
+        jButtonVerContrasena.setBorder(null);
         jButtonVerContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerContrasenaActionPerformed(evt);
@@ -138,7 +139,7 @@ public class agregarEmpleadoView extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(36, 36, 36)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonVerContrasena))
+                        .addComponent(jButtonVerContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(jLabel3))
@@ -148,7 +149,7 @@ public class agregarEmpleadoView extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jButton1)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,28 +203,37 @@ public class agregarEmpleadoView extends javax.swing.JFrame {
         String id = txtId.getText();
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
-        char[] cadenaUsuario = txtUsername.getText().toCharArray(); 
-        char[] cadenaContrasena = txtPassword.getText().toCharArray(); 
+        char[] cadenaUsuario = txtUsername.getText().toCharArray();
+        char[] cadenaContrasena = txtPassword.getText().toCharArray();
 
         if (!nombre.isEmpty() && !id.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
 
-            if (cadenaUsuario.length<5) {
-                JOptionPane.showMessageDialog(null, "El nombre de usuario debe tener al menos 5 caracteres.");
-                return;
+            for(int i = 0; i < ec.getListaEmpleado().size(); i ++){
+                if(txtId.equals(ec.getListaEmpleado().get(i).getId())){
+                    JOptionPane.showMessageDialog(this, "Ya existe un usuario con este numero de documento");
+                }else{
+                    if (cadenaUsuario.length<5) {
+                        JOptionPane.showMessageDialog(null, "El nombre de usuario debe tener al menos 5 caracteres.");
+                        return;
+                    }
+                    if(txtUsername.equals(ec.getListaEmpleado().get(i).getUsername())){
+                        JOptionPane.showMessageDialog(this, "Ya este userName existe");
+                        return;
+                    }else if (cadenaContrasena.length < 8) {
+                        JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 caracteres.");
+                        return;
+                    }else{
+                        empleadoModel nuevoEmpleado = new empleadoModel(nombre, id, username, password);
+                        empleadoController controllerEmpleado = new empleadoController();
+                        controllerEmpleado.agregarEmpleado(nuevoEmpleado);
+                        JOptionPane.showMessageDialog(this, "Empleado agregado con éxito");
+                        dispose();
+                    }
+                }
             }
 
-            if (cadenaContrasena.length < 8) {
-                JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 caracteres.");
-                return;
-            }
-
-            empleadoModel nuevoEmpleado = new empleadoModel(nombre, id, username, password);
-            empleadoController controllerEmpleado = new empleadoController();
-            controllerEmpleado.agregarEmpleado(nuevoEmpleado);
-            JOptionPane.showMessageDialog(null, "Empleado agregado con éxito");
-            dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.");
+            JOptionPane.showMessageDialog(this, "Por favor, rellene todos los campos.");
             txtId.setText("");
             txtNombre.setText("");
             txtPassword.setText("");
@@ -246,7 +256,7 @@ public class agregarEmpleadoView extends javax.swing.JFrame {
             jButtonVerContrasena.setIcon(new ImageIcon("src/Icons/ojo.png"));
             mostrando = false;
         }else{
-            txtPassword.setEchoChar((char) 0); 
+            txtPassword.setEchoChar((char) 0);
             jButtonVerContrasena.setIcon(new ImageIcon("src/Icons/ojo 2.png"));
             mostrando = true;
         }
@@ -269,3 +279,4 @@ public class agregarEmpleadoView extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
+

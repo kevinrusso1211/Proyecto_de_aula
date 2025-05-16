@@ -229,8 +229,8 @@ public class adminView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        agregarEmpleadoView vistaAgregar = new agregarEmpleadoView();
-        vistaAgregar.setVisible(true);
+        agregarEmpleadoView agregarEmpleado = new agregarEmpleadoView();
+        agregarEmpleado.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
