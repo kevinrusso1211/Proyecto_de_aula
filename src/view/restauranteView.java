@@ -17,6 +17,7 @@ public class restauranteView extends javax.swing.JFrame {
     private JTable tablaPedidos;
     private JScrollPane scrollPane;
     private restauranteController controller;
+
     public restauranteView() {
         initComponents();
         controller = new restauranteController(this, new pedidoModel());
@@ -51,7 +52,7 @@ public class restauranteView extends javax.swing.JFrame {
     }
 
     private void redimensionarIconos() {
-        
+
         redimensionarImagenJLabel(icon1, "/Icons/icon1.jpg", 200, 200);
         redimensionarImagenJLabel(icon2, "/Icons/icon2.jpg", 200, 200);
         redimensionarImagenJLabel(icon3, "/Icons/icon3.jpg", 200, 200);
@@ -71,26 +72,18 @@ public class restauranteView extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         getContentPane().setLayout(new java.awt.BorderLayout());
 
-       
-        panelSuperior = new javax.swing.JPanel();
+        panelSuperior = new javax.swing.JPanel(new BorderLayout());
         panelSuperior.setBackground(new java.awt.Color(252, 167, 44));
         panelSuperior.setPreferredSize(new java.awt.Dimension(0, 100));
         panelSuperior.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
 
-        JPanel panelTransparente = new JPanel(new GridBagLayout());
-        panelTransparente.setOpaque(false);
-
-        GridBagConstraints gbc1 = new GridBagConstraints();
-        gbc1.gridx = 0;
-        gbc1.gridy = 0;
-        gbc1.anchor = GridBagConstraints.NORTHWEST;
-        gbc1.insets = new Insets(10, 10, 0, 0);
-        panelTransparente.add(IconMain, gbc1);
-
-        panelSuperior.add(panelTransparente, BorderLayout.WEST);
+        labelTitulo.setText("Bienvenido al restaurante: Fuego y Sazon");
+        labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+        panelSuperior.add(labelTitulo, BorderLayout.CENTER);
+        
+        panelSuperior.add(IconMain, BorderLayout.WEST);
         getContentPane().add(panelSuperior, java.awt.BorderLayout.NORTH);
 
-        
         panelLateral = new javax.swing.JPanel();
         panelLateral.setBackground(new java.awt.Color(252, 167, 44));
         panelLateral.setPreferredSize(new java.awt.Dimension(200, 0));
@@ -110,7 +103,6 @@ public class restauranteView extends javax.swing.JFrame {
 
         getContentPane().add(panelLateral, java.awt.BorderLayout.EAST);
 
-        
         panelCentral = new javax.swing.JPanel();
         panelCentral.setBackground(Color.WHITE);
         panelCentral.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -120,13 +112,13 @@ public class restauranteView extends javax.swing.JFrame {
     }
 
     private void configurarTabla() {
-        
+
         String[] columnas = {"ID", "Pedido (Plato x Cantidad)", "Precio Unitario", "Total"};
 
         DefaultTableModel modeloTabla = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; 
+                return false;
             }
         };
 
@@ -141,9 +133,9 @@ public class restauranteView extends javax.swing.JFrame {
     }
 
     public void actualizarTabla(Object[] fila) {
-    DefaultTableModel modelo = (DefaultTableModel) tablaPedidos.getModel();
-    modelo.addRow(fila);
-}
+        DefaultTableModel modelo = (DefaultTableModel) tablaPedidos.getModel();
+        modelo.addRow(fila);
+    }
 
     private void setComponentVisibility(boolean visible) {
         Component[] components = {precio1, precio2, precio3, precio4, precio5, precio6,
@@ -157,7 +149,6 @@ public class restauranteView extends javax.swing.JFrame {
             c.setVisible(visible);
         }
 
-        
         if (visible) {
             precio1.setText("$0");
             precio2.setText("$0");
@@ -201,6 +192,7 @@ public class restauranteView extends javax.swing.JFrame {
         comida5 = new javax.swing.JLabel();
         comida6 = new javax.swing.JLabel();
         btnInicio = new javax.swing.JButton();
+        labelTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -301,6 +293,9 @@ public class restauranteView extends javax.swing.JFrame {
             }
         });
 
+        labelTitulo.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        labelTitulo.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -321,7 +316,9 @@ public class restauranteView extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(icon3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(icon5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(icon5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(102, 102, 102)
+                                .addComponent(labelTitulo))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1796, 1796, 1796)
                                 .addComponent(icon4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -430,7 +427,9 @@ public class restauranteView extends javax.swing.JFrame {
                         .addComponent(comida5)
                         .addGap(45, 45, 45)
                         .addComponent(comida6))
-                    .addComponent(icon5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(labelTitulo)
+                        .addComponent(icon5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -442,44 +441,38 @@ public class restauranteView extends javax.swing.JFrame {
         JPanel panelContenedorPrincipal = new JPanel(new BorderLayout());
         panelContenedorPrincipal.setBackground(Color.WHITE);
 
-
         JPanel panelVertical = new JPanel();
         panelVertical.setLayout(new BoxLayout(panelVertical, BoxLayout.Y_AXIS));
-
 
         JPanel panelHorizontal1 = new JPanel();
         panelHorizontal1.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-
         JPanel bloque1 = new JPanel();
         bloque1.setLayout(new BoxLayout(bloque1, BoxLayout.Y_AXIS));
-        bloque1.add(comida1);  
+        bloque1.add(comida1);
         bloque1.add(icon1);
         JPanel fila1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila1.add(spinnerIcon1);
         fila1.add(precio1);
         bloque1.add(fila1);
 
-
         JPanel bloque2 = new JPanel();
         bloque2.setLayout(new BoxLayout(bloque2, BoxLayout.Y_AXIS));
-        bloque2.add(comida2);  
+        bloque2.add(comida2);
         bloque2.add(icon2);
         JPanel fila2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila2.add(spinnerIcon2);
         fila2.add(precio2);
         bloque2.add(fila2);
 
-
         JPanel bloque3 = new JPanel();
         bloque3.setLayout(new BoxLayout(bloque3, BoxLayout.Y_AXIS));
-        bloque3.add(comida3);  
+        bloque3.add(comida3);
         bloque3.add(icon3);
         JPanel fila3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila3.add(spinnerIcon3);
         fila3.add(precio3);
         bloque3.add(fila3);
-
 
         Dimension tamañoBloque = new Dimension(350, 300);
         bloque1.setPreferredSize(tamañoBloque);
@@ -490,38 +483,33 @@ public class restauranteView extends javax.swing.JFrame {
         panelHorizontal1.add(bloque2);
         panelHorizontal1.add(bloque3);
 
-
         panelVertical.add(panelHorizontal1);
-        panelVertical.add(Box.createVerticalStrut(30));  
-
+        panelVertical.add(Box.createVerticalStrut(30));
 
         JPanel panelHorizontal2 = new JPanel();
         panelHorizontal2.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-
         JPanel bloque4 = new JPanel();
         bloque4.setLayout(new BoxLayout(bloque4, BoxLayout.Y_AXIS));
-        bloque4.add(comida4);  
+        bloque4.add(comida4);
         bloque4.add(icon4);
         JPanel fila4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila4.add(spinnerIcon4);
         fila4.add(precio4);
         bloque4.add(fila4);
 
-
         JPanel bloque5 = new JPanel();
         bloque5.setLayout(new BoxLayout(bloque5, BoxLayout.Y_AXIS));
-        bloque5.add(comida5);  
+        bloque5.add(comida5);
         bloque5.add(icon5);
         JPanel fila5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila5.add(spinnerIcon5);
         fila5.add(precio5);
         bloque5.add(fila5);
 
-
         JPanel bloque6 = new JPanel();
         bloque6.setLayout(new BoxLayout(bloque6, BoxLayout.Y_AXIS));
-        bloque6.add(comida6);  
+        bloque6.add(comida6);
         bloque6.add(icon6);
         JPanel fila6 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         fila6.add(spinnerIcon6);
@@ -552,19 +540,15 @@ public class restauranteView extends javax.swing.JFrame {
 
         panelVertical.add(panelHorizontal2);
 
-
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         panelBoton.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 5));
         panelBoton.add(btnAgregar);
         panelBoton.setOpaque(false);
 
-
         panelContenedorPrincipal.add(panelVertical, BorderLayout.CENTER);
         panelContenedorPrincipal.add(panelBoton, BorderLayout.SOUTH);
 
-
-        setComponentVisibility(true);  
-
+        setComponentVisibility(true);
 
         panelCentral.removeAll();
         panelCentral.setLayout(new BorderLayout());
@@ -585,16 +569,13 @@ public class restauranteView extends javax.swing.JFrame {
         icon3.setVisible(false);
         btnAgregar.setVisible(false);
 
-        
-        panelCentral.removeAll(); 
-        panelCentral.setLayout(new BorderLayout()); 
-        panelCentral.add(scrollPane, BorderLayout.CENTER); 
+        panelCentral.removeAll();
+        panelCentral.setLayout(new BorderLayout());
+        panelCentral.add(scrollPane, BorderLayout.CENTER);
 
-        
         scrollPane.setVisible(true);
         tablaPedidos.setVisible(true);
 
-        
         panelCentral.revalidate();
         panelCentral.repaint();
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -643,7 +624,7 @@ public class restauranteView extends javax.swing.JFrame {
         int cant5 = (Integer) spinnerIcon5.getValue();
         int cant6 = (Integer) spinnerIcon6.getValue();
 
-        String plato1 = comida1.getText(); 
+        String plato1 = comida1.getText();
         String plato2 = comida2.getText();
         String plato3 = comida3.getText();
         String plato4 = comida4.getText();
@@ -692,11 +673,10 @@ public class restauranteView extends javax.swing.JFrame {
             total += p6;
         }
 
-        
         if (platos.length() > 0 && platos.charAt(platos.length() - 2) == ',') {
             platos.setLength(platos.length() - 2);
         }
-        
+
         spinnerIcon1.setValue(0);
         spinnerIcon2.setValue(0);
         spinnerIcon3.setValue(0);
@@ -709,27 +689,24 @@ public class restauranteView extends javax.swing.JFrame {
         datos.put("precioTotal", "$" + total);
         datos.put("total", String.valueOf(total));
 
-        
         restauranteController controller = new restauranteController(this, new pedidoModel());
         controller.agregarPedido(datos);
 
-        panelCentral.removeAll(); 
+        panelCentral.removeAll();
         panelCentral.setLayout(new BorderLayout());
-        panelCentral.add(scrollPane, BorderLayout.CENTER); 
+        panelCentral.add(scrollPane, BorderLayout.CENTER);
 
-        
         scrollPane.setVisible(true);
         tablaPedidos.setVisible(true);
 
-        
         panelCentral.revalidate();
         panelCentral.repaint();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         Login login = new Login();
-        empleadoController empController = new empleadoController(); 
-        new loginController(login, empController,controller );
+        empleadoController empController = new empleadoController();
+        new loginController(login, empController, controller);
         login.setLocationRelativeTo(null);
         login.setVisible(true);
         dispose();
@@ -754,6 +731,7 @@ public class restauranteView extends javax.swing.JFrame {
     private javax.swing.JLabel icon4;
     private javax.swing.JLabel icon5;
     private javax.swing.JLabel icon6;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JTextField precio1;
     private javax.swing.JTextField precio2;
     private javax.swing.JTextField precio3;

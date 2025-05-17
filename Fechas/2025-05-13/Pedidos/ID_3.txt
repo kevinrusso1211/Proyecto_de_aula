@@ -1,0 +1,4 @@
+ID:3
+Platos:Pechuga a la plancha con pure x5, postre de maracuya x4, Gaseosa personal x6, Botella de agua personal x7
+PrecioTotal:$185000
+Total:185000
